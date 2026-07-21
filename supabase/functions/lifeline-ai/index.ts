@@ -159,7 +159,6 @@ function suggestedActionForRisk(risk: "low" | "medium" | "high" | "critical"): s
 
 function ruleBasedTriage(messages: Message[]): TriageResponse {
   const userMessages = messages.filter((m) => m.role === "user");
-  const lastUser = userMessages[userMessages.length - 1]?.content ?? "";
   const allSymptoms = userMessages.map((m) => m.content).join(" ");
   const risk = detectRisk(allSymptoms);
   const round = userMessages.length;
